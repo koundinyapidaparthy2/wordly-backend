@@ -46,7 +46,7 @@ def playedMatches_handler(event, context):
         }
     response = user_exists_in_played_matchesdynamodb(email)
         
-    if not response:
+    if not response or not 'Item' in response:
         return {
             'statusCode': 500,
             'body': json.dumps({
